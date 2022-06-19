@@ -15,13 +15,9 @@
 ;;; Ctrl-Enter  - ""
 ;;;
 ;;; On Mac the keybindings are for M-TAB, Shift-TAB, and M-RET .
-;;;
-;;; **** TODO ****
-;;;
-;;; - Region indent and de-indent is not working
 
 (defun jpo-region ()
-  (let ((beg (region-beginning)) (end (region-beginning)))
+  (let ((beg (region-beginning)) (end (region-end)))
     (if (> end beg)
 	(list beg end)
       (list end beg))))
@@ -46,7 +42,6 @@
 	nil)
     t))
 
-;; TODO: not doing multiple lines
 ;; TODO: create activate mark function
 (defun jpo-id-region (beg end chars indent-fun adjust-fun)
   (let ((linecount (jpo-count-lines beg end)))
